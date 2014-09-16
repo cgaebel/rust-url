@@ -227,7 +227,7 @@ pub struct RelativeSchemeData {
 
 
 /// The host name of an URL.
-#[deriving(PartialEq, Eq, Clone)]
+#[deriving(Ord, PartialOrd, PartialEq, Eq, Clone)]
 pub enum Host {
     /// A (DNS) domain name or an IPv4 address.
     ///
@@ -258,6 +258,18 @@ impl Eq for Ipv6Address {}
 impl PartialEq for Ipv6Address {
     fn eq(&self, other: &Ipv6Address) -> bool {
         self.pieces == other.pieces
+    }
+}
+
+impl Ord for Ipv6Address {
+    fn cmp(&self, other: &Ipv6Address) -> Ordering {
+        self.pieces.as_slice().cmp(&other.pieces.as_slice());
+    }
+}
+
+impl PartialOrd for Ipv6Address {
+    fn partial_cmp(&self, other: &Ipv6Address) -> Option<Ordering> {
+        self.pieces.as_slice().partial_cmp(&other.pieces.as_slice());
     }
 }
 
