@@ -263,13 +263,13 @@ impl PartialEq for Ipv6Address {
 
 impl Ord for Ipv6Address {
     fn cmp(&self, other: &Ipv6Address) -> Ordering {
-        self.pieces.as_slice().cmp(&other.pieces.as_slice());
+        self.pieces.as_slice().cmp(&other.pieces.as_slice())
     }
 }
 
 impl PartialOrd for Ipv6Address {
     fn partial_cmp(&self, other: &Ipv6Address) -> Option<Ordering> {
-        self.pieces.as_slice().partial_cmp(&other.pieces.as_slice());
+        self.pieces.as_slice().partial_cmp(&other.pieces.as_slice())
     }
 }
 
